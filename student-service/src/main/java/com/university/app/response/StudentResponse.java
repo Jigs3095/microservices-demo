@@ -7,10 +7,16 @@ public class StudentResponse {
 	private String firstName;
 	private String lastName;
 	private String email;
-	private Long addId;
-	private String city;
-	private String street;
+	private AddressResponse addressResponse;
 	
+	public AddressResponse getAddressResponse() {
+		return addressResponse;
+	}
+
+	public void setAddressResponse(AddressResponse addResponse) {
+		this.addressResponse = addResponse;
+	}
+
 	public StudentResponse(Student st){
 		this.id = st.getId();
 		this.firstName = st.getFirstName();
@@ -50,27 +56,4 @@ public class StudentResponse {
 		this.email = email;
 	}
 
-	public Long getAddId() {
-		return addId;
-	}
-
-	public void setAddId(Long addId) {
-		this.addId = addId;
-	}
-
-	public String getCity() {
-		return city;
-	}
-
-	public void setCity(String city) {
-		this.city = city;
-	}
-
-	public String getStreet() {
-		return street;
-	}
-
-	public void setStreet(String street) {
-		this.street = street;
-	}
 }

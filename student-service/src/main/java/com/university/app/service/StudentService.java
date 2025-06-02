@@ -13,21 +13,19 @@ import com.university.app.response.StudentResponse;
 public class StudentService {
 	
 	private StudentRepo strepo; 
-	AddressFeignClient addressFeignClient;
+	CommonService commonService;
 	@Autowired
-	StudentService(StudentRepo strepo, AddressFeignClient addressFeignClient){
+	StudentService(StudentRepo strepo, CommonService commonService){
 		this.strepo = strepo;
-		this.addressFeignClient=addressFeignClient;
+		this.commonService=commonService;
 	}
 	
 	public StudentResponse getStudentById(Long id) {
 		Student st = strepo.findById(id).get();
-		AddressResponse add = addressFeignClient.getAddress(st.getAddressId());
 		StudentResponse res = new StudentResponse(st);
-		res.setAddId(add.getAddressId());
-		res.setCity(add.getCity());
-		res.setStreet(add.getStreet());
+		res.setAddressResponse(commonService.getAddressById(st.getAddressId()));
 		return res;
 	}
 	
+		
 }

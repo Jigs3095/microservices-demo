@@ -6,8 +6,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import com.university.app.response.AddressResponse;
 
-@FeignClient(value="address-service", path="/api/address")
+//@FeignClient(value="address-service", path="/api/address")
+@FeignClient(value="api-gateway")  
 public interface AddressFeignClient {
-	@GetMapping("/getById/{id}")
+	@GetMapping("/address-service/api/address/getById/{id}")
 	public AddressResponse getAddress(@PathVariable Long id);
 }
