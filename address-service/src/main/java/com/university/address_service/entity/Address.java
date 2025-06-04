@@ -5,6 +5,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotBlank;
 import jakarta.persistence.Column;
 
 @Entity
@@ -15,9 +16,11 @@ public class Address {
     @GeneratedValue(strategy = GenerationType.IDENTITY) 
     private Long id; 
  
+    @NotBlank(message = "City is mandatory")
     @Column(name = "city", nullable = false, length = 100) 
     private String city; 
  
+    @NotBlank(message = "Street should not be blank")
     @Column(name = "street", unique = true, length = 255) 
     private String street;
 	public Long getId() {
