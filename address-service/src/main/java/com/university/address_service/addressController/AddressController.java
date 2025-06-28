@@ -1,6 +1,7 @@
 package com.university.address_service.addressController;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -27,6 +28,14 @@ public class AddressController {
 	@Autowired
 	public AddressController(AddressService addressService){
 		this.addressService = addressService;
+	}
+
+	@Value("${message}")
+	private String message;
+
+	@GetMapping("/message")
+	public String getMessage() {
+		return message;
 	}
 
 	@GetMapping("/getById/{id}")

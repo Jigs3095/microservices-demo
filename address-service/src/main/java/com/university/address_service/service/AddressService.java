@@ -10,9 +10,9 @@ import com.university.address_service.response.AddressResponse;
 
 @Service
 public class AddressService {
-	private AddressRepository addressRepo;	
 	
 	@Autowired
+	private AddressRepository addressRepo;	
 	public AddressService(AddressRepository addressRepo) {
 		this.addressRepo = addressRepo;
 	}
